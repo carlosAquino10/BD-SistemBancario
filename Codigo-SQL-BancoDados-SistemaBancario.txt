@@ -1,4 +1,4 @@
-"""CREATE TABLE clientes_nubank (
+CREATE TABLE clientes_nubank (
     id NUMBER PRIMARY KEY,
     nome VARCHAR2(100),
     senha VARCHAR2(50),
