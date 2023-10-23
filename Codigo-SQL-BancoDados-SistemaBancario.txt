@@ -1,0 +1,38 @@
+"""CREATE TABLE clientes_nubank (
+    id NUMBER PRIMARY KEY,
+    nome VARCHAR2(100),
+    senha VARCHAR2(50),
+    conta_numero NUMBER,
+    saldo NUMBER,
+    CONSTRAINT fk_conta_nubank FOREIGN KEY (conta_numero) REFERENCES contas_nubank(numero_conta)
+);
+
+CREATE TABLE clientes_btgpactual (
+    id NUMBER PRIMARY KEY,
+    nome VARCHAR2(100),
+    senha VARCHAR2(50),
+    conta_numero NUMBER,
+    saldo NUMBER,
+    CONSTRAINT fk_conta_btgpactual FOREIGN KEY (conta_numero) REFERENCES contas_btgpactual(numero_conta)
+);
+
+CREATE TABLE transferencias_pix_nubank (
+    id NUMBER PRIMARY KEY,
+    remetente_id NUMBER,
+    destinatario_id NUMBER,
+    valor NUMBER,
+    data_transferencia DATE,
+    CONSTRAINT fk_remetente_nubank FOREIGN KEY (remetente_id) REFERENCES clientes_nubank(id),
+    CONSTRAINT fk_destinatario_nubank FOREIGN KEY (destinatario_id) REFERENCES clientes_nubank(id)
+);
+
+
+CREATE TABLE transferencias_pix_btgpactual (
+    id NUMBER PRIMARY KEY,
+    remetente_id NUMBER,
+    destinatario_id NUMBER,
+    valor NUMBER,
+    data_transferencia DATE,
+    CONSTRAINT fk_remetente_btgpactual FOREIGN KEY (remetente_id) REFERENCES clientes_btgpactual(id),
+    CONSTRAINT fk_destinatario_btgpactual FOREIGN KEY (destinatario_id) REFERENCES clientes_btgpactual(id)
+);
